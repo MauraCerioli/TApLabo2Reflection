@@ -27,7 +27,7 @@ namespace MyLibrary
         }
     }
     public class FooPrime {
-        private FooPrime(){}
+        //private FooPrime(){}
         //public FooPrime(int i){}
         [ExecuteMe(true)]
         public void M1Prime(bool b) {
@@ -58,8 +58,8 @@ namespace MyLibrary
 
         [ExecuteMe(45.5)]
         [ExecuteMe(0)]
-        [ExecuteMe(3.2)]
-        public void M2Second(double a) {
+        [ExecuteMe(3)]
+        public void M2Second(int a) {
             Console.WriteLine("M2Second a={0}", a);
         }
 
@@ -68,8 +68,8 @@ namespace MyLibrary
             Console.WriteLine("M3Second s1={0} s2={1}", s1, s2);
         }
         [ExecuteMe("hello", null)]
-        public void M4Second(string s1, List<int> l) {
-            Console.WriteLine("M4Second s1={0} l.Count={1}", s1, null!=l?l.Count.ToString():"null");
+        public void M4Second(string s1, IEnumerable<int> l) {
+            Console.WriteLine("M4Second s1={0} l.Count={1}", s1, null != l ? l.Count().ToString() : "null");
         }
     }
 }
