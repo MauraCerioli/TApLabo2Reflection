@@ -9,7 +9,8 @@ using MyAttribute;
 namespace Executor{
     class Program{
         static void Main(string[] args){
-            var a = Assembly.LoadFrom("MyLibrary.dll");
+            const string mylibraryBinDebugMylibraryDll = @"..\..\..\MyLibrary\bin\Debug\MyLibrary.dll";
+            var a = Assembly.LoadFrom(mylibraryBinDebugMylibraryDll);
             foreach (var type in a.GetTypes())
                 if (type.IsClass){
                     Console.WriteLine(type.FullName);
