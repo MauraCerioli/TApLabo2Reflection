@@ -14,11 +14,16 @@ namespace Executor{
             foreach (var type in a.GetTypes())
                 if (type.IsClass){
                     Console.WriteLine(type.FullName);
-                    var instance = Activator.CreateInstance(type);
-                    foreach (var m in type.GetMethods()){
-                        foreach (var att in m.GetCustomAttributes<ExecuteMeAttribute>()){
-                            m.Invoke(instance, att.Arguments);
+                    try{
+                        var instance = Activator.CreateInstance(type);
+                        foreach (var m in type.GetMethods()){
+                            foreach (var att in m.GetCustomAttributes<ExecuteMeAttribute>()){
+                                m.Invoke(instance, att.Arguments);
+                            }
                         }
+                    }
+                    catch (MissingMethodException e){
+                        Console.WriteLine(e.Message);
                     }
                 }
 
